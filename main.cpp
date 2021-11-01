@@ -39,14 +39,14 @@ int main( void )
 
     GLfloat polygonVertices[] =
     {
-        200, 240, 0, 
-        160, 240, 0, // X, Y , Z Format
-        160, 300, 0,// Follows on from above point (1) in CLOCK-WISE MANNER
-        480, 300, 0,
-        480, 240, 0,
-        440, 240, 0,
-        440, 120, 0,
-        200, 120, 0,
+        200, 240, 0, // 1 
+        160, 240, 0, // 2
+        160, 300, 0, // 3
+        480, 300, 0,// 4
+        480, 240, 0,// 5
+        440, 240, 0,// 6
+        440, 120, 0,// 7
+        200, 120, 0,// 8
     };
 
     GLfloat door[] =
@@ -67,10 +67,10 @@ int main( void )
 
     GLfloat window2[] =
     {
-        280, 120, 0, 
-        280, 200, 0, // X, Y , Z Format
-        360, 200, 0,// Follows on from above point (1) in CLOCK-WISE MANNER
-        360, 120, 0,
+        380, 160, 0, 
+        380, 200, 0, // X, Y , Z Format
+        420, 200, 0,// Follows on from above point (1) in CLOCK-WISE MANNER
+        420, 160, 0,
     };
     
     glPolygonMode( GL_FRONT_AND_BACK, GL_LINE ); // polygon drawing mode (GL_POINT, GL_LINE, GL_FILL)
