@@ -19,9 +19,9 @@ int main(void)
     }
 
     // Create a windowed mode window and its OpenGL context
-    window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Polygon", NULL, NULL); // "Polygon" is title of window
-
-    if (!window)
+    window = glfwCreateWindow( SCREEN_WIDTH, SCREEN_HEIGHT, "House", NULL, NULL ); // "Polygon" is title of window
+    
+    if ( !window )
     {
         glfwTerminate();
         return -1;
@@ -39,17 +39,66 @@ int main(void)
 
     GLfloat polygonVertices[] =
     {
-        240, 240, 0,
-        160, 240, 0, // X, Y , Z Format
-        160, 330, 0,// Follows on from above point (1) in CLOCK-WISE MANNER
-        480, 330, 0,
-        480, 240, 0,
-        400, 240, 0,
-        400, 120, 0,
-        240, 120, 0,
+        200, 240, 0, // 1 
+        160, 240, 0, // 2
+        160, 300, 0, // 3
+        480, 300, 0,// 4
+        480, 240, 0,// 5
+        440, 240, 0,// 6
+        440, 120, 0,// 7
+        200, 120, 0,// 8
     };
 
-    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); // polygon drawing mode (GL_POINT, GL_LINE, GL_FILL)
+    GLfloat door[] =
+    {
+        280, 120, 0, 
+        280, 220, 0, // X, Y , Z Format
+        360, 220, 0,// Follows on from above point (1) in CLOCK-WISE MANNER
+        360, 120, 0,
+    };
+
+    GLfloat window1[] =
+    {
+        220, 180, 0, 
+        220, 220, 0, // X, Y , Z Format
+        260, 220, 0,// Follows on from above point (1) in CLOCK-WISE MANNER
+        260, 180, 0,
+    };
+
+    GLfloat window2[] =
+    {
+        380, 180, 0, 
+        380, 220, 0, // X, Y , Z Format
+        420, 220, 0,// Follows on from above point (1) in CLOCK-WISE MANNER
+        420, 180, 0,
+    };
+
+    GLfloat line1_left[] =
+    {
+        240, 180, 0,
+        240, 220, 0
+    };
+
+    GLfloat line2_left[] =
+    {
+        220, 200, 0,
+        260, 200, 0
+    };
+    
+    GLfloat line1_right[] =
+    {
+        400, 180, 0,
+        400, 220, 0
+    };
+
+    GLfloat line2_right[] =
+    {
+        380, 200, 0,
+        420, 200, 0
+    };
+    
+
+    glPolygonMode( GL_FRONT_AND_BACK, GL_LINE ); // polygon drawing mode (GL_POINT, GL_LINE, GL_FILL)
 
 
     // Loop until the user closes the window
@@ -58,13 +107,87 @@ int main(void)
         glClear(GL_COLOR_BUFFER_BIT);
 
         // render OpenGL here
-        glEnableClientState(GL_VERTEX_ARRAY);
-        glVertexPointer(3, GL_FLOAT, 0, polygonVertices);
-        glDrawArrays(GL_POLYGON, 0, 8);
-        glDisableClientState(GL_VERTEX_ARRAY);
+        glEnableClientState( GL_VERTEX_ARRAY );
+        glVertexPointer( 3, GL_FLOAT, 0, polygonVertices ); 
+        glDrawArrays( GL_POLYGON, 0, 8 ); // Number of points in polygon
+        glDisableClientState( GL_VERTEX_ARRAY );
+
+         // render OpenGL here 
+        glEnableClientState( GL_VERTEX_ARRAY );
+        glVertexPointer( 3, GL_FLOAT, 0, door ); 
+        glDrawArrays( GL_POLYGON, 0, 4 );// Number of points in polygon
+        glDisableClientState( GL_VERTEX_ARRAY );
+
+         // render OpenGL here 
+        glEnableClientState( GL_VERTEX_ARRAY );
+        glVertexPointer( 3, GL_FLOAT, 0, window1 ); 
+        glDrawArrays( GL_POLYGON, 0, 4 );// Number of points in polygon
+        glDisableClientState( GL_VERTEX_ARRAY );
+
+         // render OpenGL here 
+        glEnableClientState( GL_VERTEX_ARRAY );
+        glVertexPointer( 3, GL_FLOAT, 0, window2 ); 
+        glDrawArrays( GL_POLYGON, 0, 4 );// Number of points in polygon
+        glDisableClientState( GL_VERTEX_ARRAY );
+
+        // Render OpenGL here
+        glEnable( GL_LINE_SMOOTH );
+        // glEnable( GL_LINE_STIPPLE );
+        glPushAttrib( GL_LINE_BIT );
+        glLineWidth( 3 );
+        glLineStipple( 1, 0x00FF );
+        glEnableClientState( GL_VERTEX_ARRAY );
+        glVertexPointer( 3, GL_FLOAT, 0, line1_left ); // name of line
+        glDrawArrays( GL_LINES, 0, 2 );
+        glDisableClientState( GL_VERTEX_ARRAY );
+        glPopAttrib( );
+        glDisable( GL_LINE_STIPPLE );
+        glDisable( GL_LINE_SMOOTH );
+
+        // Render OpenGL here
+        glEnable( GL_LINE_SMOOTH );
+        // glEnable( GL_LINE_STIPPLE );
+        glPushAttrib( GL_LINE_BIT );
+        glLineWidth( 3 );
+        glLineStipple( 1, 0x00FF );
+        glEnableClientState( GL_VERTEX_ARRAY );
+        glVertexPointer( 3, GL_FLOAT, 0, line2_left ); // name of line
+        glDrawArrays( GL_LINES, 0, 2 );
+        glDisableClientState( GL_VERTEX_ARRAY );
+        glPopAttrib( );
+        glDisable( GL_LINE_STIPPLE );
+        glDisable( GL_LINE_SMOOTH );
+
+        // Render OpenGL here
+        glEnable( GL_LINE_SMOOTH );
+        // glEnable( GL_LINE_STIPPLE );
+        glPushAttrib( GL_LINE_BIT );
+        glLineWidth( 3 );
+        glLineStipple( 1, 0x00FF );
+        glEnableClientState( GL_VERTEX_ARRAY );
+        glVertexPointer( 3, GL_FLOAT, 0, line1_right ); // name of line
+        glDrawArrays( GL_LINES, 0, 2 );
+        glDisableClientState( GL_VERTEX_ARRAY );
+        glPopAttrib( );
+        glDisable( GL_LINE_STIPPLE );
+        glDisable( GL_LINE_SMOOTH );
+
+        // Render OpenGL here
+        glEnable( GL_LINE_SMOOTH );
+        // glEnable( GL_LINE_STIPPLE );
+        glPushAttrib( GL_LINE_BIT );
+        glLineWidth( 3 );
+        glLineStipple( 1, 0x00FF );
+        glEnableClientState( GL_VERTEX_ARRAY );
+        glVertexPointer( 3, GL_FLOAT, 0, line2_right ); // name of line
+        glDrawArrays( GL_LINES, 0, 2 );
+        glDisableClientState( GL_VERTEX_ARRAY );
+        glPopAttrib( );
+        glDisable( GL_LINE_STIPPLE );
+        glDisable( GL_LINE_SMOOTH );
 
         // render OpenGL here
-        drawCircle(320, 330, 160, 360 );
+        drawCircle(320, 300, 160, 360 );
 
         // Swap front and back buffers
         glfwSwapBuffers(window);
