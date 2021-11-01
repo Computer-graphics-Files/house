@@ -52,25 +52,25 @@ int main( void )
     GLfloat door[] =
     {
         280, 120, 0, 
-        280, 200, 0, // X, Y , Z Format
-        360, 200, 0,// Follows on from above point (1) in CLOCK-WISE MANNER
+        280, 220, 0, // X, Y , Z Format
+        360, 220, 0,// Follows on from above point (1) in CLOCK-WISE MANNER
         360, 120, 0,
     };
 
     GLfloat window1[] =
     {
-        220, 160, 0, 
-        220, 200, 0, // X, Y , Z Format
-        260, 200, 0,// Follows on from above point (1) in CLOCK-WISE MANNER
-        260, 160, 0,
+        220, 180, 0, 
+        220, 220, 0, // X, Y , Z Format
+        260, 220, 0,// Follows on from above point (1) in CLOCK-WISE MANNER
+        260, 180, 0,
     };
 
     GLfloat window2[] =
     {
-        380, 160, 0, 
-        380, 200, 0, // X, Y , Z Format
-        420, 200, 0,// Follows on from above point (1) in CLOCK-WISE MANNER
-        420, 160, 0,
+        380, 180, 0, 
+        380, 220, 0, // X, Y , Z Format
+        420, 220, 0,// Follows on from above point (1) in CLOCK-WISE MANNER
+        420, 180, 0,
     };
     
     glPolygonMode( GL_FRONT_AND_BACK, GL_LINE ); // polygon drawing mode (GL_POINT, GL_LINE, GL_FILL)
