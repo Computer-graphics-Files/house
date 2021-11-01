@@ -45,7 +45,7 @@ int main( void )
         240, 120, 0,
     };
     
-    glPolygonMode( GL_FRONT_AND_BACK, GL_FILL ); // polygon drawing mode (GL_POINT, GL_LINE, GL_FILL)
+    glPolygonMode( GL_FRONT_AND_BACK, GL_LINE ); // polygon drawing mode (GL_POINT, GL_LINE, GL_FILL)
 
 
     // Loop until the user closes the window
