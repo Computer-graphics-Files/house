@@ -33,4 +33,41 @@ int main( void )
     glMatrixMode( GL_MODELVIEW ); // (default matrix mode) modelview matrix defines how your objects are transformed (meaning translation, rotation and scaling) in your world
     glLoadIdentity( ); // same as above comment
 
+    GLfloat polygonVertices[] =
+    {
+        240, 240, 0, 
+        160, 240, 0, // X, Y , Z Format
+        160, 330, 0,// Follows on from above point (1) in CLOCK-WISE MANNER
+        480, 330, 0,
+        480, 240, 0,
+        400, 240, 0,
+        400, 120, 0,
+        240, 120, 0,
+    };
+    
+    glPolygonMode( GL_FRONT_AND_BACK, GL_FILL ); // polygon drawing mode (GL_POINT, GL_LINE, GL_FILL)
+
+
+    // Loop until the user closes the window
+    while ( !glfwWindowShouldClose( window ) )
+    {
+        glClear( GL_COLOR_BUFFER_BIT );
+
+        // render OpenGL here
+        glEnableClientState( GL_VERTEX_ARRAY );
+        glVertexPointer( 3, GL_FLOAT, 0, polygonVertices ); // If 4 is entered, what happens??
+        glDrawArrays( GL_POLYGON, 0, 8 );
+        glDisableClientState( GL_VERTEX_ARRAY );
+        
+        // Swap front and back buffers
+        glfwSwapBuffers( window );
+        
+        // Poll for and process events
+        glfwPollEvents( );
+    }
+    
+    glfwTerminate( );
+    
+    return 0;
+
 }
