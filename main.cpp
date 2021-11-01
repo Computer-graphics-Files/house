@@ -5,7 +5,7 @@
 #define SCREEN_WIDTH 640
 #define SCREEN_HEIGHT 480
 
-void drawCircle( GLfloat x, GLfloat y, GLfloat z, GLfloat radius, GLint numberOfSides );
+// void drawCircle( GLfloat x, GLfloat y, GLfloat z, GLfloat radius, GLint numberOfSides );
 
 
 int main( void )
@@ -64,7 +64,7 @@ int main( void )
         glDisableClientState( GL_VERTEX_ARRAY );
 
         // render OpenGL here
-        drawCircle( SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0, 120, 36 );
+        //drawCircle( SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0, 120, 36 );
         
         // Swap front and back buffers
         glfwSwapBuffers( window );
@@ -82,38 +82,38 @@ int main( void )
 
 
 
-void drawCircle( GLfloat x, GLfloat y, GLfloat z, GLfloat radius, GLint numberOfSides )
-{
-    GLint numberOfVertices = numberOfSides + 1;
+// void drawCircle( GLfloat x, GLfloat y, GLfloat z, GLfloat radius, GLint numberOfSides )
+// {
+//     GLint numberOfVertices = numberOfSides + 1;
     
-    GLfloat doublePi = 2.0f * M_PI;
+//     GLfloat doublePi = 2.0f * M_PI;
     
-    GLfloat circleVerticesX[numberOfVertices];
-    GLfloat circleVerticesY[numberOfVertices];
-    GLfloat circleVerticesZ[numberOfVertices];
+//     GLfloat circleVerticesX[numberOfVertices];
+//     GLfloat circleVerticesY[numberOfVertices];
+//     GLfloat circleVerticesZ[numberOfVertices];
     
-    //circleVerticesX[0] = x;
-    //circleVerticesY[0] = y;
-    //circleVerticesZ[0] = z;
+//     //circleVerticesX[0] = x;
+//     //circleVerticesY[0] = y;
+//     //circleVerticesZ[0] = z;
     
-    for ( int i = 0; i < numberOfVertices; i++ )
-    {
-        circleVerticesX[i] = x + ( radius * cos( i * doublePi / numberOfSides ) );
-        circleVerticesY[i] = y + ( radius * sin( i * doublePi / numberOfSides ) );
-        circleVerticesZ[i] = z;
-    }
+//     for ( int i = 0; i < numberOfVertices; i++ )
+//     {
+//         circleVerticesX[i] = x + ( radius * cos( i * doublePi / numberOfSides ) );
+//         circleVerticesY[i] = y + ( radius * sin( i * doublePi / numberOfSides ) );
+//         circleVerticesZ[i] = z;
+//     }
     
-    GLfloat allCircleVertices[numberOfVertices * 3];
+//     GLfloat allCircleVertices[numberOfVertices * 3];
     
-    for ( int i = 0; i < numberOfVertices; i++ )
-    {
-        allCircleVertices[i * 3] = circleVerticesX[i];
-        allCircleVertices[( i * 3 ) + 1] = circleVerticesY[i];
-        allCircleVertices[( i * 3 ) + 2] = circleVerticesZ[i];
-    }
+//     for ( int i = 0; i < numberOfVertices; i++ )
+//     {
+//         allCircleVertices[i * 3] = circleVerticesX[i];
+//         allCircleVertices[( i * 3 ) + 1] = circleVerticesY[i];
+//         allCircleVertices[( i * 3 ) + 2] = circleVerticesZ[i];
+//     }
     
-    glEnableClientState( GL_VERTEX_ARRAY );
-    glVertexPointer( 3, GL_FLOAT, 0, allCircleVertices );
-    glDrawArrays( GL_LINE_STRIP, 0, numberOfVertices );
-    glDisableClientState( GL_VERTEX_ARRAY );
-}
+//     glEnableClientState( GL_VERTEX_ARRAY );
+//     glVertexPointer( 3, GL_FLOAT, 0, allCircleVertices );
+//     glDrawArrays( GL_LINE_STRIP, 0, numberOfVertices );
+//     glDisableClientState( GL_VERTEX_ARRAY );
+// }
