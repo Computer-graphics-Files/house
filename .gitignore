@@ -3,14 +3,6 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
-
-#VS project structure
-glew32.dll
-OpenGLVS.sln
-OpenGLVS.vcxproj
-OpenGLVS.vcxproj.filters
-
-
 # User-specific files
 *.rsuser
 *.suo
