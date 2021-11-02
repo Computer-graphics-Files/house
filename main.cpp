@@ -187,7 +187,7 @@ int main( void )
         glDisable( GL_LINE_SMOOTH );
 
          // render OpenGL here
-        drawCircle(320, 330, 160, 360 );
+        drawCircle(320, 300, 120, 250 ); // movement on x axis, movement on y axis , size, 
 
         // Swap front and back buffers
         glfwSwapBuffers( window );
