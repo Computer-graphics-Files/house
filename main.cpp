@@ -1,12 +1,14 @@
-﻿#include <GL/glew.h>
+﻿
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <math.h>    
 
 #define SCREEN_WIDTH 640
 #define SCREEN_HEIGHT 480
 
-void drawHalfCircle(GLfloat x, GLfloat y, GLfloat radius, GLint numberOfSides);
+void drawSemiCircle(GLfloat x, GLfloat y, GLfloat radius, GLint numberOfSides);
 void drawCircle(GLfloat x, GLfloat y, GLfloat radius, GLint numberOfSides);
+
 
 
 int main(void)
@@ -188,8 +190,12 @@ int main(void)
         glDisable(GL_LINE_SMOOTH);
 
         // render OpenGL here
-        drawHalfCircle(320, 300, 120, 250); // movement on x axis, movement on y axis , size, 
-        drawCircle(320, 300, 5, 250); // movement on x axis, movement on y axis , size, 
+        drawSemiCircle(320, 300, 120, 250); // movement on x axis, movement on y axis , size, 
+
+        // render OpenGL here
+        drawCircle(350, 170, 5, 250); // movement on x axis, movement on y axis , radius, sides 
+        drawCircle(550, 470, 20, 360); // movement on x axis, movement on y axis , radius, sides 
+
 
         // Swap front and back buffers
         glfwSwapBuffers(window);
@@ -207,7 +213,7 @@ int main(void)
 
 
 
-void drawHalfCircle(float cx, float cy, float r, int num_segments)
+void drawSemiCircle(float cx, float cy, float r, int num_segments)
 {
     float theta = 3.1415926 / float(num_segments);
     float tangetial_factor = tanf(theta);//calculate the tangential factor 
@@ -242,9 +248,10 @@ void drawHalfCircle(float cx, float cy, float r, int num_segments)
     }
     glEnd();
 }
+
 void drawCircle(float cx, float cy, float r, int num_segments)
 {
-    float theta = 2 * 3.1415926 / float(num_segments);
+    float theta = 3.1415926 * 2 / float(num_segments);
     float tangetial_factor = tanf(theta);//calculate the tangential factor 
 
     float radial_factor = cosf(theta);//calculate the radial factor 
