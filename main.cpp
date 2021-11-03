@@ -32,7 +32,7 @@ int main(void)
 
     // Make the window's context current
     glfwMakeContextCurrent(window);
-
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     glClearColor(1.0, 1.0, 1.0, 1.0);
     glViewport(0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT); // specifies the part of the window to which OpenGL will draw (in pixels), convert from normalised to pixels
     glMatrixMode(GL_PROJECTION); // projection matrix defines the properties of the camera that views the objects in the world coordinate frame. Here you typically set the zoom factor, aspect ratio and the near and far clipping planes
@@ -40,7 +40,7 @@ int main(void)
     glOrtho(0, SCREEN_WIDTH, 0, SCREEN_HEIGHT, 0, 1); // essentially set coordinate system
     glMatrixMode(GL_MODELVIEW); // (default matrix mode) modelview matrix defines how your objects are transformed (meaning translation, rotation and scaling) in your world
     glLoadIdentity(); // same as above comment
-
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     GLfloat polygonVertices[] =
     {
         200, 240, 0, // 1 
@@ -52,7 +52,7 @@ int main(void)
         440, 120, 0,// 7
         200, 120, 0,// 8
     };
-
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     GLfloat door[] =
     {
         280, 120, 0,
@@ -111,25 +111,32 @@ int main(void)
         glClear(GL_COLOR_BUFFER_BIT);
 
         // render OpenGL here
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         glEnableClientState(GL_VERTEX_ARRAY);
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         glVertexPointer(3, GL_FLOAT, 0, polygonVertices);
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         glDrawArrays(GL_POLYGON, 0, 8); // Number of points in polygon
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         glDisableClientState(GL_VERTEX_ARRAY);
 
         // render OpenGL here 
         glEnableClientState(GL_VERTEX_ARRAY);
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         glVertexPointer(3, GL_FLOAT, 0, door);
         glDrawArrays(GL_POLYGON, 0, 4);// Number of points in polygon
         glDisableClientState(GL_VERTEX_ARRAY);
 
         // render OpenGL here 
         glEnableClientState(GL_VERTEX_ARRAY);
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         glVertexPointer(3, GL_FLOAT, 0, window1);
         glDrawArrays(GL_POLYGON, 0, 4);// Number of points in polygon
         glDisableClientState(GL_VERTEX_ARRAY);
 
         // render OpenGL here 
         glEnableClientState(GL_VERTEX_ARRAY);
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         glVertexPointer(3, GL_FLOAT, 0, window2);
         glDrawArrays(GL_POLYGON, 0, 4);// Number of points in polygon
         glDisableClientState(GL_VERTEX_ARRAY);
@@ -137,10 +144,12 @@ int main(void)
         // Render OpenGL here
         glEnable(GL_LINE_SMOOTH);
         // glEnable( GL_LINE_STIPPLE );
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         glPushAttrib(GL_LINE_BIT);
         glLineWidth(3);
         glLineStipple(1, 0x00FF);
         glEnableClientState(GL_VERTEX_ARRAY);
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         glVertexPointer(3, GL_FLOAT, 0, line1_left); // name of line
         glDrawArrays(GL_LINES, 0, 2);
         glDisableClientState(GL_VERTEX_ARRAY);
@@ -150,11 +159,13 @@ int main(void)
 
         // Render OpenGL here
         glEnable(GL_LINE_SMOOTH);
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         // glEnable( GL_LINE_STIPPLE );
         glPushAttrib(GL_LINE_BIT);
         glLineWidth(3);
         glLineStipple(1, 0x00FF);
         glEnableClientState(GL_VERTEX_ARRAY);
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         glVertexPointer(3, GL_FLOAT, 0, line2_left); // name of line
         glDrawArrays(GL_LINES, 0, 2);
         glDisableClientState(GL_VERTEX_ARRAY);
@@ -164,13 +175,14 @@ int main(void)
 
         // Render OpenGL here
         glEnable(GL_LINE_SMOOTH);
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         // glEnable( GL_LINE_STIPPLE );
        
         glPushAttrib(GL_LINE_BIT);
         glLineWidth(3);
         glLineStipple(1, 0x00FF);
         glEnableClientState(GL_VERTEX_ARRAY);
-        
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         glVertexPointer(3, GL_FLOAT, 0, line1_right); // name of line
         glDrawArrays(GL_LINES, 0, 2);
         glDisableClientState(GL_VERTEX_ARRAY);
@@ -180,12 +192,13 @@ int main(void)
 
         // Render OpenGL here
         glEnable(GL_LINE_SMOOTH);
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         // glEnable( GL_LINE_STIPPLE );
         glPushAttrib(GL_LINE_BIT);
         glLineWidth(3);
         glLineStipple(1, 0x00FF);
         glEnableClientState(GL_VERTEX_ARRAY);
-        
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         glVertexPointer(3, GL_FLOAT, 0, line2_right); // name of line
         glDrawArrays(GL_LINES, 0, 2);
         glDisableClientState(GL_VERTEX_ARRAY);
@@ -194,10 +207,11 @@ int main(void)
         glDisable(GL_LINE_SMOOTH);
 
         // render OpenGL here
-        glColor3f(0.3, 0.3, 1.3);
+        glColor3f(0.3, 0.3, 0.3); //blackish
         drawSemiCircle(320, 300, 120, 250); // movement on x axis, movement on y axis , size, 
 
         // render OpenGL here - door knob
+        glColor3f(0.3, 0.3, 0.3); //blackish
         drawCircle(350, 170, 5, 250); // movement on x axis, movement on y axis , radius, sides 
         
 
@@ -206,13 +220,14 @@ int main(void)
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
         drawCircleFill(500, 400, 40, 360); // movement on x axis, movement on y axis , radius, sides 
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-        glColor3f(1.0f, 1.0f, 1.0f);
+        glColor3f(1.0f, 1.0f, 1.0f); //white
         drawCircleFill(525, 410, 40, 360); // movement on x axis, movement on y axis , radius, sides 
-
-
+        glColor3f(0.3, 0.3, 0.3);
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         // Swap front and back buffers
         glfwSwapBuffers(window);
-
+        glColor3f(0.3, 0.3, 0.3);
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         // Poll for and process events
         glfwPollEvents();
     }
@@ -301,7 +316,7 @@ void drawCircleFill(float cx, float cy, float r, int num_segments)
 {
     float theta = 3.1415926 * 2 / float(num_segments);
     float tangetial_factor = tanf(theta);//calculate the tangential factor 
-
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     float radial_factor = cosf(theta);//calculate the radial factor 
 
     float x = r;//we start at angle = 0 
