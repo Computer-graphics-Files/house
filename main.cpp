@@ -7,6 +7,7 @@
 
 void drawSemiCircle(GLfloat x, GLfloat y, GLfloat radius, GLint numberOfSides);
 void drawCircle(GLfloat x, GLfloat y, GLfloat radius, GLint numberOfSides);
+void drawCircleFill(float cx, float cy, float r, int num_segments);
 
 
 
@@ -32,6 +33,7 @@ int main(void)
     // Make the window's context current
     glfwMakeContextCurrent(window);
 
+    glClearColor(1.0, 1.0, 1.0, 1.0);
     glViewport(0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT); // specifies the part of the window to which OpenGL will draw (in pixels), convert from normalised to pixels
     glMatrixMode(GL_PROJECTION); // projection matrix defines the properties of the camera that views the objects in the world coordinate frame. Here you typically set the zoom factor, aspect ratio and the near and far clipping planes
     glLoadIdentity(); // replace the current matrix with the identity matrix and starts us a fresh because matrix transforms such as glOrpho and glRotate cumulate, basically puts us at (0, 0, 0)
@@ -163,10 +165,12 @@ int main(void)
         // Render OpenGL here
         glEnable(GL_LINE_SMOOTH);
         // glEnable( GL_LINE_STIPPLE );
+       
         glPushAttrib(GL_LINE_BIT);
         glLineWidth(3);
         glLineStipple(1, 0x00FF);
         glEnableClientState(GL_VERTEX_ARRAY);
+        
         glVertexPointer(3, GL_FLOAT, 0, line1_right); // name of line
         glDrawArrays(GL_LINES, 0, 2);
         glDisableClientState(GL_VERTEX_ARRAY);
@@ -181,6 +185,7 @@ int main(void)
         glLineWidth(3);
         glLineStipple(1, 0x00FF);
         glEnableClientState(GL_VERTEX_ARRAY);
+        
         glVertexPointer(3, GL_FLOAT, 0, line2_right); // name of line
         glDrawArrays(GL_LINES, 0, 2);
         glDisableClientState(GL_VERTEX_ARRAY);
@@ -189,12 +194,20 @@ int main(void)
         glDisable(GL_LINE_SMOOTH);
 
         // render OpenGL here
+        glColor3f(0.3, 0.3, 1.3);
         drawSemiCircle(320, 300, 120, 250); // movement on x axis, movement on y axis , size, 
 
-        // render OpenGL here
+        // render OpenGL here - door knob
         drawCircle(350, 170, 5, 250); // movement on x axis, movement on y axis , radius, sides 
-        drawCircle(500, 400, 40, 360); // movement on x axis, movement on y axis , radius, sides 
-        drawCircle(520, 400, 40, 360); // movement on x axis, movement on y axis , radius, sides 
+        
+
+        
+        glColor3f(0.2f, 0.5f, 0.5f); //greenish
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        drawCircleFill(500, 400, 40, 360); // movement on x axis, movement on y axis , radius, sides 
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        glColor3f(1.0f, 1.0f, 1.0f);
+        drawCircleFill(525, 410, 40, 360); // movement on x axis, movement on y axis , radius, sides 
 
 
         // Swap front and back buffers
@@ -265,6 +278,44 @@ void drawCircle(float cx, float cy, float r, int num_segments)
     {
         glVertex2f(x + cx, y + cy);//output vertex 
 
+        //calculate the tangential vector 
+        //remember, the radial vector is (x, y) 
+        //to get the tangential vector we flip those coordinates and negate one of them 
+
+        float tx = -y;
+        float ty = x;
+
+        //add the tangential vector 
+
+        x += tx * tangetial_factor;
+        y += ty * tangetial_factor;
+
+        //correct using the radial factor 
+
+        x *= radial_factor;
+        y *= radial_factor;
+    }
+    glEnd();
+}
+void drawCircleFill(float cx, float cy, float r, int num_segments)
+{
+    float theta = 3.1415926 * 2 / float(num_segments);
+    float tangetial_factor = tanf(theta);//calculate the tangential factor 
+
+    float radial_factor = cosf(theta);//calculate the radial factor 
+
+    float x = r;//we start at angle = 0 
+
+    float y = 0;
+
+    //glClear(GL_COLOR_BUFFER_BIT);
+    
+
+    glBegin(GL_POLYGON);
+    for (int ii = 0; ii < num_segments; ii++)
+    {
+        glVertex2f(x + cx, y + cy);//output vertex 
+        
         //calculate the tangential vector 
         //remember, the radial vector is (x, y) 
         //to get the tangential vector we flip those coordinates and negate one of them 
