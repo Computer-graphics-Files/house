@@ -9,8 +9,6 @@ void drawSemiCircle(GLfloat x, GLfloat y, GLfloat radius, GLint numberOfSides);
 void drawCircle(GLfloat x, GLfloat y, GLfloat radius, GLint numberOfSides);
 void drawCircleFill(float cx, float cy, float r, int num_segments);
 
-
-
 int main(void)
 {
     GLFWwindow* window;
@@ -53,6 +51,7 @@ int main(void)
         200, 120, 0,// 8
     };
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    glLineWidth(1);
     GLfloat door[] =
     {
         280, 120, 0,
@@ -214,13 +213,18 @@ int main(void)
 
         // render OpenGL here - door knob
         glColor3f(0.8, 0.0, 0.6); //purple
-        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        glPolygonMode(GL_BACK, GL_FILL);
         drawCircleFill(350, 170, 5, 250); // movement on x axis, movement on y axis , radius, sides 
         
 
         
+        
+        
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        glLineWidth(5);
+        drawCircle(500, 400, 40, 360); // movement on x axis, movement on y axis , radius, sides
         glColor3f(0.8f, 0.6f, 0.2f); //Golden
-        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        glLineWidth(5);
         drawCircleFill(500, 400, 40, 360); // movement on x axis, movement on y axis , radius, sides 
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
         glColor3f(1.0f, 1.0f, 1.0f); //white
@@ -231,6 +235,7 @@ int main(void)
         glfwSwapBuffers(window);
         glColor3f(0.3, 0.3, 0.3);
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        glLineWidth(1);
         // Poll for and process events
         glfwPollEvents();
     }
@@ -240,8 +245,6 @@ int main(void)
     return 0;
 
 }
-
-
 
 
 void drawSemiCircle(float cx, float cy, float r, int num_segments)
@@ -290,7 +293,7 @@ void drawCircle(float cx, float cy, float r, int num_segments)
     float x = r;//we start at angle = 0 
 
     float y = 0;
-
+    glLineWidth(2);
     glBegin(GL_LINE_LOOP);
     for (int ii = 0; ii < num_segments; ii++)
     {
