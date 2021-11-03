@@ -20,7 +20,7 @@ int main(void)
     }
 
     // Create a windowed mode window and its OpenGL context
-    window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "House", NULL, NULL); // "Polygon" is title of window
+    window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "2D-House", NULL, NULL); // "Polygon" is title of window
 
     if (!window)
     {
