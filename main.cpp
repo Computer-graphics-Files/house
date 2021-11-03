@@ -1,5 +1,4 @@
-﻿
-#include <GL/glew.h>
+﻿#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <math.h>    
 
@@ -194,7 +193,8 @@ int main(void)
 
         // render OpenGL here
         drawCircle(350, 170, 5, 250); // movement on x axis, movement on y axis , radius, sides 
-        drawCircle(550, 470, 20, 360); // movement on x axis, movement on y axis , radius, sides 
+        drawCircle(500, 400, 40, 360); // movement on x axis, movement on y axis , radius, sides 
+        drawCircle(520, 400, 40, 360); // movement on x axis, movement on y axis , radius, sides 
 
 
         // Swap front and back buffers
