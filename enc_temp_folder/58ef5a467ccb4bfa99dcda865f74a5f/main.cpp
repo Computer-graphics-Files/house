@@ -114,13 +114,13 @@ int main(void)
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         glEnableClientState(GL_VERTEX_ARRAY);
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-        glColor3f(0.8, 0.0, 0.6);//purple
+        glColor3f(0.8, 0.0, 0.6);//
         glVertexPointer(3, GL_FLOAT, 0, polygonVertices);
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         glDrawArrays(GL_POLYGON, 0, 8); // Number of points in polygon
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         glDisableClientState(GL_VERTEX_ARRAY);
-        glColor3f(0.2, 0.2, 0.2);//blackish
+        glColor3f(0.2, 0.2, 0.2);
         // render OpenGL here 
         glEnableClientState(GL_VERTEX_ARRAY);
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
